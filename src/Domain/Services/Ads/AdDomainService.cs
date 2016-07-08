@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Model;
+using Domain.Model.Ads;
 
-namespace Persistence.Redis.Offer
+namespace Domain.Services.Ads
 {
-    public class OfferRepository : Domain.Model.IOfferRepository
+    public class AdDomainService : IAdDomainService
     {
-        bool IOfferRepository.Insert(Domain.Model.Offer offer)
+        
+        public bool ApplyDiscount(Ad ad, int discount)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

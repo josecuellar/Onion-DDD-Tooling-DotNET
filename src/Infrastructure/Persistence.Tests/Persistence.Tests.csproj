@@ -50,8 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Redis\Demand\DemandRepositoryShould.cs" />
-    <Compile Include="Redis\Offer\OfferRepositoryShould.cs" />
+    <Compile Include="Redis\AdRepositoryShould.cs" />
     <Compile Include="SQL\Demand\DemandRepositoryShould.cs" />
     <Compile Include="SQL\Offer\OfferRepositoryShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

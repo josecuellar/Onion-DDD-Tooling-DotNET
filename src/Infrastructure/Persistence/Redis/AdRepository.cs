@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Model;
+using Domain.Model.Ads;
 
-namespace Persistence.SQL.Offer
+namespace Persistence.Redis
 {
-    public class OfferRepository : Domain.Model.IOfferRepository
+    public class AdRepository : IAdRepository
     {
-        bool IOfferRepository.Insert(Domain.Model.Offer offer)
+        public bool Insert(Ad demand)
         {
             throw new NotImplementedException();
         }

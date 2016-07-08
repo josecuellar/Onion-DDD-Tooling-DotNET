@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model
+namespace Domain.Model.Ads
 {
-    public class DemandNotFoundException : Exception 
+    public class AdNotFoundException : Exception 
     {
         public override string Message
         {
             get
             {
-                return "Not found demand." + base.Message;
+                return "Ad not found." + base.Message;
             }
         }
     }

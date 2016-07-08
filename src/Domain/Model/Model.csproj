@@ -40,12 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demand\IDemandRepository.cs" />
-    <Compile Include="Demand\DemandNotFoundException.cs" />
-    <Compile Include="Demand\Demand.cs" />
-    <Compile Include="Offer\Offer.cs" />
-    <Compile Include="Offer\OfferNotFoundException.cs" />
-    <Compile Include="Offer\IOfferRepository.cs" />
+    <Compile Include="Ads\Ad.cs" />
+    <Compile Include="Money.cs" />
+    <Compile Include="Currency.cs" />
+    <Compile Include="Ads\AdId.cs" />
+    <Compile Include="Ads\AdNotFoundException.cs" />
+    <Compile Include="Ads\IAdRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model
+namespace Application.Services.Ads
 {
-    public interface IOfferRepository
+    public interface IAdService
     {
-        bool Insert(Domain.Model.Offer offer);
+
+        bool SaveInPrivateArea();
+
     }
 }

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Model.Ads;
 
-namespace Domain.Services
+namespace Persistence.SQL
 {
-    public class OfferDomainService : IOfferDomainService
+    public class AdRepository : IAdRepository
     {
-
-        bool IOfferDomainService.ApplyDiscount(Domain.Model.Offer offer, int discount)
+        public bool Insert(Ad demand)
         {
             throw new NotImplementedException();
         }
-
     }
 }

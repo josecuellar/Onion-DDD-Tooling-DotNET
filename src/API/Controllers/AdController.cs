@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Services.Ads;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,8 +8,16 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class ValuesController : ApiController
+    public class AdController : ApiController
     {
+
+        private IAdService adService;
+
+        public AdController(IAdService adService)
+        {
+            this.adService = adService;
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -35,5 +44,6 @@ namespace API.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }

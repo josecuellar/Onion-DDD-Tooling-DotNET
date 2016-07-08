@@ -41,10 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Redis\Demand\DemandRepository.cs" />
-    <Compile Include="Redis\Offer\OfferRepository.cs" />
-    <Compile Include="SQL\Demand\DemandRepository.cs" />
-    <Compile Include="SQL\Offer\OfferRepository.cs" />
+    <Compile Include="Redis\AdRepository.cs" />
+    <Compile Include="SQL\AdRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Model\Model.csproj">

@@ -4,20 +4,31 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using API;
 using API.Controllers;
+using NUnit.Framework;
+using Application.Services.Ads;
+using Moq;
 
 namespace API.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class ValuesControllerTest
     {
-        [TestMethod]
+        private AdController _AdController;
+
+        [SetUp]
+        public void SetUpFixture()
+        {
+            this._AdController = new AdController(new Mock<IAdService>().Object);
+        }
+
+        [Test]
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+
+            AdController controller = this._AdController;
 
             // Act
             IEnumerable<string> result = controller.Get();
@@ -29,11 +40,11 @@ namespace API.Tests.Controllers
             Assert.AreEqual("value2", result.ElementAt(1));
         }
 
-        [TestMethod]
+        [Test]
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            AdController controller = this._AdController;
 
             // Act
             string result = controller.Get(5);
@@ -42,11 +53,11 @@ namespace API.Tests.Controllers
             Assert.AreEqual("value", result);
         }
 
-        [TestMethod]
+        [Test]
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            AdController controller = this._AdController;
 
             // Act
             controller.Post("value");
@@ -54,11 +65,11 @@ namespace API.Tests.Controllers
             // Assert
         }
 
-        [TestMethod]
+        [Test]
         public void Put()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            AdController controller = this._AdController;
 
             // Act
             controller.Put(5, "value");
@@ -66,11 +77,11 @@ namespace API.Tests.Controllers
             // Assert
         }
 
-        [TestMethod]
+        [Test]
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            AdController controller = this._AdController;
 
             // Act
             controller.Delete(5);

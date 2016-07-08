@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.Demand
+namespace Domain.Model.Ads
 {
-    public interface IDemandService
+    public interface IAdRepository
     {
-
-        bool SaveInPrivateArea();
-
+        bool Insert(Domain.Model.Ads.Ad adv);
     }
 }

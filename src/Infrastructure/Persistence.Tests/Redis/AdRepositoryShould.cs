@@ -3,12 +3,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Infrastructure.Persistence.Tests.Redis
 {
+
     [TestClass]
-    public class DemandRepositoryShould
+    public class AdRepositoryShould
     {
+        
         [TestMethod]
-        public void save_demand_valid_parameters()
+        public void save_ad_valid_parameters()
         {
+
         }
+
     }
+
 }

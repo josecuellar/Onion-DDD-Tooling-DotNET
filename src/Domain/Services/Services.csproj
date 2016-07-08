@@ -40,10 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demand\DemandDomainService.cs" />
-    <Compile Include="Demand\IDemandDomainService.cs" />
-    <Compile Include="Offer\IOfferDomainService.cs" />
-    <Compile Include="Offer\OfferDomainService.cs" />
+    <Compile Include="Ads\AdDomainService.cs" />
+    <Compile Include="Ads\IAdDomainService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +50,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
