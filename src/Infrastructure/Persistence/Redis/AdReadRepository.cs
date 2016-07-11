@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Model.Ads;
+using Domain.Core.Model.Ads;
 
 namespace Persistence.Redis
 {
-    public class AdRepository : IAdRepository
+    public class AdReadRepository : IAdReadRepository
     {
-        public bool Insert(Ad demand)
+        public Ad GetById(AdId id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Ad> GetAll()
         {
             throw new NotImplementedException();
         }

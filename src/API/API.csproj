@@ -233,6 +233,14 @@
       <Project>{82352cc2-373c-4f8f-939c-198e2158e4db}</Project>
       <Name>Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\Core\Core.csproj">
+      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Persistence\Persistence.csproj">
+      <Project>{e8d139da-abd3-4178-8a7b-6dddd0ed6afc}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

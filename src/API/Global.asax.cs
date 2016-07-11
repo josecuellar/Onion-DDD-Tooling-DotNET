@@ -10,6 +10,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Application.Services.Ads;
+using Domain.Core.Model.Ads;
+using Domain.Core.Services.Ads;
+using Persistence.SQL;
 
 namespace API
 {
@@ -37,6 +40,8 @@ namespace API
 
             // Set the dependency resolver to be Autofac.
             builder.RegisterType<AdService>().As<IAdService>().InstancePerRequest();
+            builder.RegisterType<AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
+            builder.RegisterType<AdDomainService>().As<IAdDomainService>().InstancePerRequest();
             //*
 
             var container = builder.Build();

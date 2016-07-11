@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model
+namespace Domain.Core.Model
 {
     /// <summary>
     /// Value Object Money. Inmutable. 
@@ -26,6 +26,13 @@ namespace Domain.Model
         {
             return new Money(
                 this.Amount + amount, 
+                new Currency(Model.Currency.IsoCode.EUR));
+        }
+
+        public Money DecreaseAmount(int amount)
+        {
+            return new Money(
+                this.Amount - amount,
                 new Currency(Model.Currency.IsoCode.EUR));
         }
 

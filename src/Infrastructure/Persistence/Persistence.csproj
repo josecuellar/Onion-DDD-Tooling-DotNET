@@ -41,13 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Redis\AdRepository.cs" />
-    <Compile Include="SQL\AdRepository.cs" />
+    <Compile Include="ElasticSearch\AdReadRepository.cs" />
+    <Compile Include="Redis\AdCommandRepository.cs" />
+    <Compile Include="Redis\AdReadRepository.cs" />
+    <Compile Include="SQL\AdCommandRepository.cs" />
+    <Compile Include="SQL\AdReadRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Model\Model.csproj">
-      <Project>{7e6cc758-a493-4420-96f8-eaa03a5cf9d2}</Project>
-      <Name>Model</Name>
+    <ProjectReference Include="..\..\Domain\Core\Core.csproj">
+      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

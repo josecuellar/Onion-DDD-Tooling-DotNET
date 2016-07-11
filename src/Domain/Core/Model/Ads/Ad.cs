@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Ads
+namespace Domain.Core.Model.Ads
 {
 
     /// <summary>
@@ -13,9 +13,9 @@ namespace Domain.Model.Ads
     public class Ad
     {
 
-        public readonly AdId Id;
+        public AdId Id;
 
-        public readonly Money Price;
+        public Money Price;
 
         public Ad(AdId id, Money price)
         {

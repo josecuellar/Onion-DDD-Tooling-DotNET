@@ -23,22 +23,22 @@ namespace API.Tests.Controllers
             this._AdController = new AdController(new Mock<IAdService>().Object);
         }
 
-        [Test]
-        public void Get()
-        {
-            // Arrange
+        //[Test]
+        //public void Get()
+        //{
+        //    // Arrange
 
-            AdController controller = this._AdController;
+        //    AdController controller = this._AdController;
 
-            // Act
-            IEnumerable<string> result = controller.Get();
+        //    // Act
+        //    IEnumerable<string> result = controller.Get();
 
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //    Assert.AreEqual(2, result.Count());
+        //    Assert.AreEqual("value1", result.ElementAt(0));
+        //    Assert.AreEqual("value2", result.ElementAt(1));
+        //}
 
         [Test]
         public void GetById()

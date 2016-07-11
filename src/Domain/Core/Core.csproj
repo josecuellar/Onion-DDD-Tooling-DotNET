@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E6CC758-A493-4420-96F8-EAA03A5CF9D2}</ProjectGuid>
+    <ProjectGuid>{0A90EF36-C558-4EE5-B757-07353A13C740}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,17 +37,19 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ads\Ad.cs" />
-    <Compile Include="Money.cs" />
-    <Compile Include="Currency.cs" />
-    <Compile Include="Ads\AdId.cs" />
-    <Compile Include="Ads\AdNotFoundException.cs" />
-    <Compile Include="Ads\IAdRepository.cs" />
+    <Compile Include="Model\Ads\Ad.cs" />
+    <Compile Include="Model\Ads\AdId.cs" />
+    <Compile Include="Model\Ads\AdNotFoundException.cs" />
+    <Compile Include="Model\Ads\IAdCommandRepository.cs" />
+    <Compile Include="Model\Ads\IAdReadRepository.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Ads\AdDomainService.cs" />
+    <Compile Include="Services\Ads\IAdDomainService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

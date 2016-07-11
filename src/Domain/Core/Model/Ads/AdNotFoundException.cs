@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Ads
+namespace Domain.Core.Model.Ads
 {
     public class AdNotFoundException : Exception 
     {

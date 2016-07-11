@@ -21,6 +21,9 @@ namespace API.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+
+            IEnumerable < Domain.Core.Model.Ads.Ad > adsToReturn = this.adService.GetAllAdsAndApplyDiscount(50);
+
             return new string[] { "value1", "value2" };
         }
 

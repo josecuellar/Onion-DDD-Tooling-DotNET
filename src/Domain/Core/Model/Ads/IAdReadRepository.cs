@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Ads
+namespace Domain.Core.Model.Ads
 {
-    public interface IAdRepository
+    public interface IAdReadRepository
     {
-        bool Insert(Domain.Model.Ads.Ad adv);
+        Ad GetById(AdId id);
+
+        IEnumerable<Ad> GetAll();
     }
 }
