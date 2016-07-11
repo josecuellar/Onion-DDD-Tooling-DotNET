@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event\PublishEvent.cs" />
     <Compile Include="Model\Ads\Ad.cs" />
     <Compile Include="Model\Ads\AdId.cs" />
     <Compile Include="Model\Ads\AdNotFoundException.cs" />

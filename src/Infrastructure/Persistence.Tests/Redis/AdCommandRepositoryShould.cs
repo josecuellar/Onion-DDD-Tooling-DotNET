@@ -1,14 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System;
+
 
 namespace Infrastructure.Persistence.Tests.Redis
 {
 
-    [TestClass]
-    public class AdRepositoryShould
+    [TestFixture]
+    public class AdCommandRepositoryShould
     {
         
-        [TestMethod]
+        [Test]
         public void save_ad_valid_parameters()
         {
 
