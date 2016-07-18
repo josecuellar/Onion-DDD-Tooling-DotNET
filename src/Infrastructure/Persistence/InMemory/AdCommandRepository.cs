@@ -5,14 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Core.Model.Ads;
 
-namespace Persistence.SQL
+namespace Persistence.InMemory
 {
     public class AdCommandRepository : IAdCommandRepository
     {
 
-
-
-        public bool Insert(Ad adv)
+        public int Insert(Ad adv)
         {
             throw new NotImplementedException();
         }

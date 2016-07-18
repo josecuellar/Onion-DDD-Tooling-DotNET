@@ -1,10 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -12,7 +8,6 @@ using System.Web.Routing;
 using Application.Services.Ads;
 using Domain.Core.Model.Ads;
 using Domain.Core.Services.Ads;
-using Persistence.SQL;
 
 namespace API
 {
@@ -38,9 +33,16 @@ namespace API
             // OPTIONAL: Register the Autofac filter provider.
             builder.RegisterWebApiFilterProvider(config);
 
-            // Set the dependency resolver to be Autofac.
+            // APPLICATION SERVICE
             builder.RegisterType<AdService>().As<IAdService>().InstancePerRequest();
-            builder.RegisterType<AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
+
+            //* INFRASTRUCTURE
+            builder.RegisterType<Persistence.SQL.SqlConnectionFactory>().As<Persistence.SQL.IConnectionFactory>().InstancePerRequest();
+            builder.RegisterType<Persistence.SQL.Ads.AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
+            builder.RegisterType<Persistence.SQL.Ads.AdCommandRepository>().As<IAdCommandRepository>().InstancePerRequest();
+            //*
+
+            //DOMAIN SERVICES
             builder.RegisterType<AdDomainService>().As<IAdDomainService>().InstancePerRequest();
             //*
 

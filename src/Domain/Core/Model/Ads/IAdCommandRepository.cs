@@ -8,7 +8,7 @@ namespace Domain.Core.Model.Ads
 {
     public interface IAdCommandRepository
     {
-        bool Insert(Ad ad);
+        int Insert(Ad ad);
 
         bool Update(Ad ad);
 

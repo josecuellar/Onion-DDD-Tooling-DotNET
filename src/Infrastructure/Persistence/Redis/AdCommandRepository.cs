@@ -12,7 +12,7 @@ namespace Persistence.Redis
 
 
 
-        public bool Insert(Ad adv)
+        public int Insert(Ad adv)
         {
             throw new NotImplementedException();
         }

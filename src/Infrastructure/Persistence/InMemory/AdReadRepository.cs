@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Domain.Core.Model.Ads;
 using Domain.Core.Model;
 
-namespace Persistence.SQL
+namespace Persistence.InMemory
 {
     public class AdReadRepository : IAdReadRepository
     {
         public Ad GetById(AdId id)
         {
+
+            
+
             //throw new NotImplementedException();
             return new Ad(new AdId("123-236"), new Money(200, new Currency(Currency.IsoCode.EUR)));
         }

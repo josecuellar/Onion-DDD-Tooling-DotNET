@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.1\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.1.5.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\JetBrains.Annotations.10.1.5\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,14 +53,27 @@
     <Compile Include="ElasticSearch\AdReadRepository.cs" />
     <Compile Include="Redis\AdCommandRepository.cs" />
     <Compile Include="Redis\AdReadRepository.cs" />
-    <Compile Include="SQL\AdCommandRepository.cs" />
-    <Compile Include="SQL\AdReadRepository.cs" />
+    <Compile Include="InMemory\AdCommandRepository.cs" />
+    <Compile Include="InMemory\AdReadRepository.cs" />
+    <Compile Include="SQL\Ads\QueryObjects\AdDelete.cs" />
+    <Compile Include="SQL\Ads\QueryObjects\AdInsert.cs" />
+    <Compile Include="SQL\Ads\QueryObjects\AdUpdate.cs" />
+    <Compile Include="SQL\QueryObject.cs" />
+    <Compile Include="SQL\QueryObjectExtensions.cs" />
+    <Compile Include="SQL\Ads\AdCommandRepository.cs" />
+    <Compile Include="SQL\Ads\QueryObjects\AdSelect.cs" />
+    <Compile Include="SQL\SqlConnectionFactory.cs" />
+    <Compile Include="SQL\IConnectionFactory.cs" />
+    <Compile Include="SQL\Ads\AdReadRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Core\Core.csproj">
       <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
