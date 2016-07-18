@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{B74B67B2-3B20-44E9-AD29-5167D5EE4D32}"
 EndProject
@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B7FF4A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cache", "Infrastructure\Cache\Cache.csproj", "{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{6092AC9C-8429-4D3B-8C7B-2115A7FE363F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6092AC9C-8429-4D3B-8C7B-2115A7FE363F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6092AC9C-8429-4D3B-8C7B-2115A7FE363F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,5 +87,6 @@ Global
 		{0A90EF36-C558-4EE5-B757-07353A13C740} = {AB8839D7-AEE4-4A8F-9DA2-7C138CBBBAC7}
 		{AFFE2280-C73A-4597-999B-15D9A4E7303D} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
 		{6092AC9C-8429-4D3B-8C7B-2115A7FE363F} = {AB8839D7-AEE4-4A8F-9DA2-7C138CBBBAC7}
+		{A9B93089-F13F-4FF8-AA3E-07960EDC5AF0} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
 	EndGlobalSection
 EndGlobal
