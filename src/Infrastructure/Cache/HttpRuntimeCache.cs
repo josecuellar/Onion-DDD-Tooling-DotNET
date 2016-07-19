@@ -85,11 +85,6 @@ namespace Cache
             }
         }
 
-        /// <summary>
-        /// Recupera una elemento de la caché
-        /// </summary>
-        /// <param name="_Key">Key</param>
-        /// <remarks></remarks>
         public object GetValue(string _Key)
         {
             if (System.Web.HttpContext.Current == null)
