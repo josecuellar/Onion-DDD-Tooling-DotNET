@@ -14,14 +14,15 @@ using System.Collections;
 namespace Cache
 {
 
-    public class HttpRuntimeCache : ICache
+    public class HttpRuntimeCache<T> : ICache<T>
     {
 
-        public const int AbsoluteMinutesCache = 720;
+        private const int AbsoluteMinutesCache = 720;
 
-        public const int SlidingMinutesCache = 720;
+        private const int SlidingMinutesCache = 720;
 
-        public void Set(string _Key, object _oCacheValue)
+
+        public void Set(string _Key, T _oCacheValue)
         {
             if (System.Web.HttpContext.Current == null)
                 throw new InvalidOperationException("Persistence.InMemory.HttpRuntimeCache.Set :: Entorno HttpContext incorrecto.");
@@ -44,7 +45,7 @@ namespace Cache
             }
         }
 
-        public void Set(string _Key, object _oCacheValue, System.DateTime _dtExpires)
+        public void Set(string _Key, T _oCacheValue, System.DateTime _dtExpires)
         {
             if (System.Web.HttpContext.Current == null)
                 throw new InvalidOperationException("Persistence.InMemory.HttpRuntimeCache.Set :: Entorno HttpContext incorrecto.");
@@ -85,7 +86,7 @@ namespace Cache
             }
         }
 
-        public object GetValue(string _Key)
+        public T Get(string _Key)
         {
             if (System.Web.HttpContext.Current == null)
                 throw new InvalidOperationException("Persistence.InMemory.HttpRuntimeCache.GetValue :: Entorno HttpContext incorrecto.");
@@ -93,7 +94,7 @@ namespace Cache
             if (string.IsNullOrEmpty(_Key))
                 throw new InvalidDataException("Persistence.InMemory.HttpRuntimeCache.GetValue :: Parámetros de entrada incorrectos");
 
-            return HttpRuntime.Cache.Get(_Key);
+            return (T)HttpRuntime.Cache.Get(_Key);
         }
 
         public bool Exists(string _Key)
@@ -111,6 +112,15 @@ namespace Cache
             return false;
         }
 
+        public int GetSlidingExpiration()
+        {
+            return SlidingMinutesCache;
+        }
+
+        public int GetAbsoluteExpiration()
+        {
+            return AbsoluteMinutesCache;
+        }
     }
 
 }

@@ -53,10 +53,10 @@
     <Compile Include="SQL\Ads\QueryObjects\AdDelete.cs" />
     <Compile Include="SQL\Ads\QueryObjects\AdInsert.cs" />
     <Compile Include="SQL\Ads\QueryObjects\AdUpdate.cs" />
-    <Compile Include="SQL\QueryObject.cs" />
-    <Compile Include="SQL\QueryObjectExtensions.cs" />
     <Compile Include="SQL\Ads\AdCommandRepository.cs" />
     <Compile Include="SQL\Ads\QueryObjects\AdSelect.cs" />
+    <Compile Include="SQL\QueryObject.cs" />
+    <Compile Include="SQL\QueryObjectExtensions.cs" />
     <Compile Include="SQL\SqlConnectionFactory.cs" />
     <Compile Include="SQL\IConnectionFactory.cs" />
     <Compile Include="SQL\Ads\AdReadRepository.cs" />
@@ -65,6 +65,10 @@
     <ProjectReference Include="..\..\Domain\Core\Domain.Core.csproj">
       <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cache\Infrastructure.Cache.csproj">
+      <Project>{a9b93089-f13f-4ff8-aa3e-07960edc5af0}</Project>
+      <Name>Infrastructure.Cache</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace Cache
 {
-    public interface ICache
+    public interface ICache<T>
     {
 
-        void Set(string _Key, object _oCacheValue);
+        void Set(string key, T cacheValue);
 
-        void Set(string _Key, object _oCacheValue, System.DateTime _dtExpires);
+        void Set(string key, T cacheValue, System.DateTime expires);
 
-        void Remove(string _Key);
+        void Remove(string key);
 
         void RemovePrefix(string prefixKey);
 
-        object GetValue(string _Key);
+        T Get(string key);
 
-        bool Exists(string _Key);
+        bool Exists(string key);
+
+        int GetSlidingExpiration();
+
+        int GetAbsoluteExpiration();
 
     }
 }
