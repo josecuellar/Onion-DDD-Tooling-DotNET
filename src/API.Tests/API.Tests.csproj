@@ -136,9 +136,13 @@
       <Project>{B74B67B2-3B20-44E9-AD29-5167D5EE4D32}</Project>
       <Name>API</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Application\Services\Services.csproj">
+    <ProjectReference Include="..\Application\Services.Tests\Application.Services.Tests.csproj">
+      <Project>{294e7ab2-ed23-4acc-9cd8-af7636d76532}</Project>
+      <Name>Application.Services.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\Services\Application.Services.csproj">
       <Project>{82352cc2-373c-4f8f-939c-198e2158e4db}</Project>
-      <Name>Services</Name>
+      <Name>Application.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

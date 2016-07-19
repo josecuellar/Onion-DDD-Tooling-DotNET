@@ -37,7 +37,12 @@ namespace API
             builder.RegisterType<AdService>().As<IAdService>().InstancePerRequest();
 
             //* INFRASTRUCTURE
-            builder.RegisterType<Persistence.SQL.SqlConnectionFactory>().As<Persistence.SQL.IConnectionFactory>().InstancePerRequest();
+            builder.RegisterType<Persistence.SQL.SqlConnectionFactory>()
+                .As<Persistence.SQL.IConnectionFactory>()
+                .WithParameter("connectionString", System.Configuration.ConfigurationManager.ConnectionStrings["LocalSQLServer"].ConnectionString)
+                .InstancePerRequest();
+
+
             builder.RegisterType<Persistence.SQL.Ads.AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
             builder.RegisterType<Persistence.SQL.Ads.AdCommandRepository>().As<IAdCommandRepository>().InstancePerRequest();
             //*

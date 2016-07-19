@@ -231,26 +231,26 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Application\Services\Services.csproj">
-      <Project>{82352cc2-373c-4f8f-939c-198e2158e4db}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Core\Core.csproj">
-      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Persistence\Persistence.csproj">
-      <Project>{e8d139da-abd3-4178-8a7b-6dddd0ed6afc}</Project>
-      <Name>Persistence</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Services\Application.Services.csproj">
+      <Project>{82352cc2-373c-4f8f-939c-198e2158e4db}</Project>
+      <Name>Application.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Core\Domain.Core.csproj">
+      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Persistence\Infrastructure.Persistence.csproj">
+      <Project>{e8d139da-abd3-4178-8a7b-6dddd0ed6afc}</Project>
+      <Name>Infrastructure.Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
