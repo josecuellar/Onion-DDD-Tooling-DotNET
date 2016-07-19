@@ -8,6 +8,8 @@ using System.Web.Routing;
 using Application.Services.Ads;
 using Domain.Core.Model.Ads;
 using Domain.Core.Services.Ads;
+using Cache;
+using System.Collections.Generic;
 
 namespace API
 {
@@ -37,11 +39,15 @@ namespace API
             builder.RegisterType<AdService>().As<IAdService>().InstancePerRequest();
 
             //* INFRASTRUCTURE
+            
+            //CacheRepository for Ad
+            builder.RegisterType<Cache.HttpRuntimeCache<IEnumerable<Ad>>>().As<ICache<IEnumerable<Ad>>>().InstancePerRequest();
+            
+            //Sql connection type & connectionString
             builder.RegisterType<Persistence.SQL.SqlConnectionFactory>()
                 .As<Persistence.SQL.IConnectionFactory>()
                 .WithParameter("connectionString", System.Configuration.ConfigurationManager.ConnectionStrings["LocalSQLServer"].ConnectionString)
                 .InstancePerRequest();
-
 
             builder.RegisterType<Persistence.SQL.Ads.AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
             builder.RegisterType<Persistence.SQL.Ads.AdCommandRepository>().As<IAdCommandRepository>().InstancePerRequest();

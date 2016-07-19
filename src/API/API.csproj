@@ -247,6 +247,10 @@
       <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
       <Name>Domain.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Cache\Infrastructure.Cache.csproj">
+      <Project>{a9b93089-f13f-4ff8-aa3e-07960edc5af0}</Project>
+      <Name>Infrastructure.Cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Persistence\Infrastructure.Persistence.csproj">
       <Project>{e8d139da-abd3-4178-8a7b-6dddd0ed6afc}</Project>
       <Name>Infrastructure.Persistence</Name>

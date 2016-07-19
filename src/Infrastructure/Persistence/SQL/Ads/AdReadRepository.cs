@@ -3,6 +3,7 @@ using System.Linq;
 using Domain.Core.Model.Ads;
 using System.Data;
 using Persistence.SQL.Ads.QueryObjects;
+using Cache;
 
 namespace Persistence.SQL.Ads
 {
@@ -11,9 +12,10 @@ namespace Persistence.SQL.Ads
         private readonly IConnectionFactory connection;
         private readonly Cache.ICache<IEnumerable<Ad>> cacheRepository;
 
-        public AdReadRepository(IConnectionFactory connectionFactory)
+        public AdReadRepository(IConnectionFactory connectionFactory, ICache<IEnumerable<Ad>> cacheRepository)
         {
             this.connection = connectionFactory;
+            this.cacheRepository = cacheRepository;
         }
 
         public Ad GetById(AdId advId)
