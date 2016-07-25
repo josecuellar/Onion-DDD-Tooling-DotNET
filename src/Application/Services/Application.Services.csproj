@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Ads\AdService.cs" />
     <Compile Include="Ads\IAdService.cs" />
+    <Compile Include="Ads\AdDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

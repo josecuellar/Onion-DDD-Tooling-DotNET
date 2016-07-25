@@ -24,7 +24,7 @@ namespace Application.Services.Ads
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Ad> GetAllAdsAndApplyDiscount(int discount)
+        public IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount)
         {
             //throw new NotImplementedException();
 
@@ -32,8 +32,14 @@ namespace Application.Services.Ads
 
             this.adDomainService.ApplyDiscount(ads, discount);
 
-            return ads;
-            
+            //TO-DO: Configure Mapper interface & provider
+            return ads.ToList().ConvertAll(src => new Ads.AdDto()
+            {
+                Id = src.Id.Id,
+                Amount = src.Price.Amount,
+                IsoCode = src.Price.Currency.Iso.ToString()
+            });
+            //*
         }
     }
 }

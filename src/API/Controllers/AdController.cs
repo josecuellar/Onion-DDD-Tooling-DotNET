@@ -22,8 +22,7 @@ namespace API.Controllers
         public IEnumerable<string> Get()
         {
 
-            IEnumerable < Domain.Core.Model.Ads.Ad > adsToReturn = this.adService.GetAllAdsAndApplyDiscount(50);
-
+            IEnumerable<Application.Services.Ads.AdDto> adsToReturn = this.adService.GetAllAdsAndApplyDiscount(50);
             return new string[] { "value1", "value2" };
         }
 
