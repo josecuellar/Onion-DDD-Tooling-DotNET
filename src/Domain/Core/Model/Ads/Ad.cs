@@ -17,10 +17,16 @@ namespace Domain.Core.Model.Ads
 
         public Money Price;
 
-        public Ad(AdId id, Money price)
+        public Coords Coords;
+
+        public PostalCode PostalCode;
+
+        public Ad(AdId id, Money price, Coords coords, PostalCode postalCode)
         {
             this.Id = id;
             this.Price = price;
+            this.Coords = coords;
+            this.PostalCode = postalCode;
         }
 
     }

@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A90EF36-C558-4EE5-B757-07353A13C740}</ProjectGuid>
+    <ProjectGuid>{238BC2D1-4053-47C1-B785-DDF5C20E695A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
+    <RootNamespace>ACL</RootNamespace>
+    <AssemblyName>ACL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,30 +30,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event\PublishEvent.cs" />
-    <Compile Include="Model\PostalCode.cs" />
-    <Compile Include="Model\Coords.cs" />
-    <Compile Include="Model\Ads\Ad.cs" />
-    <Compile Include="Model\Ads\AdId.cs" />
-    <Compile Include="Model\Ads\AdNotFoundException.cs" />
-    <Compile Include="Model\Ads\IAdCommandRepository.cs" />
-    <Compile Include="Model\Ads\IAdReadRepository.cs" />
-    <Compile Include="Model\Currency.cs" />
-    <Compile Include="Model\Money.cs" />
+    <Compile Include="PostalCodeTranslator.cs" />
+    <Compile Include="PostalCodeAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ACL\IPostalCodeTranslator.cs" />
-    <Compile Include="Services\ACL\IPostalCodeAdapter.cs" />
-    <Compile Include="Services\Ads\AdDomainService.cs" />
-    <Compile Include="Services\Ads\IAdDomainService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Core\Domain.Core.csproj">
+      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

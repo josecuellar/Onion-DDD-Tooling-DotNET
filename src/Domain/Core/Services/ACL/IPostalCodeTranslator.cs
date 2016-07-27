@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Event
+namespace Domain.Core.Services
 {
-    public class PublishEvent
+    public interface IPostalCodeTranslator
     {
+        Model.PostalCode ToPostalCode(object postalCodeData);
     }
 }

@@ -8,7 +8,7 @@ namespace Domain.Core.Model
 {
 
     /// <summary>
-    /// Value Object Money. Inmutable. 
+    /// Value Object Currency. Inmutable. 
     /// </summary>
     public class Currency
     {

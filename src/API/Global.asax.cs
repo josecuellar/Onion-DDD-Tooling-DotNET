@@ -53,8 +53,12 @@ namespace API
             builder.RegisterType<Persistence.SQL.Ads.AdCommandRepository>().As<IAdCommandRepository>().InstancePerRequest();
             //*
 
-            //DOMAIN SERVICES
+            //DOMAIN SERVICES - ACL
             builder.RegisterType<AdDomainService>().As<IAdDomainService>().InstancePerRequest();
+                //ACL for external API façade
+                builder.RegisterType<ACL.PostalCodeAdapter>().As<Domain.Core.Services.IPostalCodeAdapter>().InstancePerRequest();
+                builder.RegisterType<ACL.PostalCodeTranslator>().As<Domain.Core.Services.IPostalCodeTranslator>().InstancePerRequest();
+                //*
             //*
 
             var container = builder.Build();

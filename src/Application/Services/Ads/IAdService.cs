@@ -13,5 +13,7 @@ namespace Application.Services.Ads
         bool SaveInPrivateArea();
 
         IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount);
+
+        AdDto ChangePostalCode(string advId, string code);
     }
 }

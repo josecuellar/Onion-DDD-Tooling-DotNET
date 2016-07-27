@@ -18,18 +18,27 @@ namespace Persistence.SQL.Ads
             this.cacheRepository = cacheRepository;
         }
 
-        public Ad GetById(AdId advId)
+        public Ad GetById(AdId adId)
         {
-            IEnumerable<Ad> adToReturn = cacheRepository.Get("Ad" + advId.Id);
-            if (adToReturn.SingleOrDefault() != null)
+
+            IEnumerable<Ad> adToReturn = cacheRepository.Get("Ad" + adId.Id);
+            if (adToReturn != null)
                 return adToReturn.SingleOrDefault();
+
+            //TO-DO - Return fixed data. Get original repo
+            adToReturn = new List<Ad>();
+            adToReturn = adToReturn.ToList();
+            ((List<Ad>)adToReturn).Add(new Ad(adId, new Domain.Core.Model.Money(32, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), new Domain.Core.Model.Coords(33, 33), new Domain.Core.Model.PostalCode("08150")));
+            cacheRepository.Set("Ad" + adId.Id, adToReturn);
+            return adToReturn.SingleOrDefault();
+            //*
 
             using (IDbConnection dbConnection = connection.Create())
             {
-                QueryObject byId = new AdSelect().ById(advId.Id);
+                QueryObject byId = new AdSelect().ById(adId.Id);
                 adToReturn = dbConnection.Query<Ad>(byId);
 
-                cacheRepository.Set("Ad" + advId.Id, adToReturn);
+                cacheRepository.Set("Ad" + adId.Id, adToReturn);
                 return adToReturn.SingleOrDefault();
             }
         }

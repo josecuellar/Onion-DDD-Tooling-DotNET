@@ -29,6 +29,8 @@ namespace API.Controllers
         // GET api/values/5
         public string Get(int id)
         {
+            //simulate change postal code for test. TO-DO: Create test with TDD :)
+            Application.Services.Ads.AdDto adToReturn = this.adService.ChangePostalCode(id.ToString(), "08150");
             return "value";
         }
 

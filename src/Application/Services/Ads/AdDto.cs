@@ -15,5 +15,9 @@ namespace Application.Services.Ads
         public int Amount { get; set; }
 
         public string IsoCode { get; set; }
+
+        public string PostalCode { get; set; }
+
+        public string PostalCodeName { get; set; }
     }
 }

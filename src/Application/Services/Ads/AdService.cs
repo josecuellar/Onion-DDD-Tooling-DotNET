@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Core.Services.Ads;
+using Domain.Core.Services;
 using Domain.Core.Model.Ads;
 
 namespace Application.Services.Ads
@@ -12,11 +13,15 @@ namespace Application.Services.Ads
     {
         private IAdDomainService adDomainService;
         private IAdReadRepository adRepository;
+        private IPostalCodeAdapter postalCodeAdapter;
 
-        public AdService(IAdDomainService adDomainService, IAdReadRepository adRepository)
+        public AdService(IAdDomainService adDomainService, 
+                         IAdReadRepository adRepository,
+                         IPostalCodeAdapter postalCodeAdapter)
         {
             this.adDomainService = adDomainService;
             this.adRepository = adRepository;
+            this.postalCodeAdapter = postalCodeAdapter;
         }
 
         public bool SaveInPrivateArea()
@@ -40,6 +45,23 @@ namespace Application.Services.Ads
                 IsoCode = src.Price.Currency.Iso.ToString()
             });
             //*
+        }
+
+        public AdDto ChangePostalCode(string adId, string code)
+        {
+            Ad ad = this.adRepository.GetById(new AdId(adId));
+            ad.PostalCode = this.postalCodeAdapter.GetByCode(code);
+
+            //TO-Do Save in repository & Configure Mapper interface & provider
+            return new AdDto()
+            {
+                Id = ad.Id.Id,
+                Amount = ad.Price.Amount,
+                IsoCode = ad.Price.Currency.Iso.ToString(),
+                PostalCode = ad.PostalCode.Code,
+                PostalCodeName = ad.PostalCode.Name
+            };
+
         }
     }
 }

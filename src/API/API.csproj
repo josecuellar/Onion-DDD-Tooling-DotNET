@@ -64,6 +64,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,9 +86,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -246,6 +247,10 @@
     <ProjectReference Include="..\Domain\Core\Domain.Core.csproj">
       <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
       <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\ACL\ACL.csproj">
+      <Project>{238bc2d1-4053-47c1-b785-ddf5c20e695a}</Project>
+      <Name>ACL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Cache\Infrastructure.Cache.csproj">
       <Project>{a9b93089-f13f-4ff8-aa3e-07960edc5af0}</Project>
