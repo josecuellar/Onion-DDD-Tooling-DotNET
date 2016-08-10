@@ -12,12 +12,24 @@ namespace Domain.Core.Services.Ads
 
         public void ApplyDiscount(Ad ad, int discount)
         {
+            if (ad == null)
+                throw (new NullReferenceException());
+
+            if (discount <= 0)
+                throw (new InvalidOperationException());
+
             ad.Price = ad.Price.DecreaseAmount(discount);
         }
 
         public void ApplyDiscount(IEnumerable<Ad> ads, int discount)
         {
-            foreach(Ad currentAd in ads)
+            if (ads == null)
+                throw (new NullReferenceException());
+
+            if (discount <= 0)
+                throw (new InvalidOperationException());
+
+            foreach (Ad currentAd in ads)
             {
                 currentAd.Price = currentAd.Price.DecreaseAmount(discount);
             }

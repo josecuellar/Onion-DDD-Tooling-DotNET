@@ -64,7 +64,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Core\Domain.Core.csproj">
       <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
-      <Name>Core</Name>
+      <Name>Domain.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cache\Infrastructure.Cache.csproj">
       <Project>{a9b93089-f13f-4ff8-aa3e-07960edc5af0}</Project>

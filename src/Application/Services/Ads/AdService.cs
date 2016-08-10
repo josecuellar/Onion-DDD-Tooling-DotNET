@@ -31,7 +31,8 @@ namespace Application.Services.Ads
 
         public IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount)
         {
-            //throw new NotImplementedException();
+            if (discount <= 0)
+                throw new InvalidOperationException();
 
             IEnumerable<Ad> ads = this.adRepository.GetAll();
 
