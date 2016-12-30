@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ads\AdService.cs" />
-    <Compile Include="Ads\IAdService.cs" />
-    <Compile Include="Ads\AdDto.cs" />
+    <Compile Include="Ads\AdCommandService.cs" />
+    <Compile Include="Ads\AdReadService.cs" />
+    <Compile Include="Ads\IAdCommandService.cs" />
+    <Compile Include="Ads\IAdReadService.cs" />
+    <Compile Include="Ads\DTO\AdDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

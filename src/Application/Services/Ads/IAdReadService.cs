@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Core.Model.Ads;
+using Application.Services.Ads.DTO;
 
 
 namespace Application.Services.Ads
 {
-    public interface IAdService
+    public interface IAdReadService
     {
-        bool SaveInPrivateArea();
-
         IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount);
 
-        AdDto ChangePostalCode(string advId, string code);
+        IEnumerable<AdDto> GetAdsTitleContainsAndApplyDiscount(string searchText, int discount);
     }
 }

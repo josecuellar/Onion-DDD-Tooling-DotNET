@@ -1,4 +1,5 @@
 ﻿using Application.Services.Ads;
+using Application.Services.Ads.DTO;
 using Domain.Core.Model.Ads;
 using Domain.Core.Services;
 using Domain.Core.Services.Ads;
@@ -16,7 +17,7 @@ namespace Application.Services.Tests.Ads
         private Mock<IAdReadRepository> adReadRepository;
         private Mock<IAdDomainService> domainService;
         private IEnumerable<Ad> ads;
-        private IAdService adService;
+        private IAdReadService adReadService;
 
         private const int DISCOUNT = 30;
         private const int INVALID_DISCOUNT = -50;
@@ -33,12 +34,14 @@ namespace Application.Services.Tests.Ads
                     new Ad(new AdId("Ad1_" + Guid.NewGuid()),
                            new Domain.Core.Model.Money(AMOUNT_MONEY_AD_1, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)),
                            new Domain.Core.Model.Coords(1.34343432, 3.44546),
-                           new Domain.Core.Model.PostalCode("08150")),
+                           new Domain.Core.Model.PostalCode("08150"), 
+                           "Title 1"),
 
                     new Ad(new AdId("Ad2_" + Guid.NewGuid()),
                             new Domain.Core.Model.Money(AMOUNT_MONEY_AD_2, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)),
                             new Domain.Core.Model.Coords(1.34343432, 3.44546),
-                            new Domain.Core.Model.PostalCode("08759"))
+                            new Domain.Core.Model.PostalCode("08759"), 
+                           "Title 2")
                 };
 
             this.adReadRepository = new Mock<IAdReadRepository>();
@@ -46,7 +49,7 @@ namespace Application.Services.Tests.Ads
 
             this.domainService = new Mock<IAdDomainService>();
 
-            this.adService = new AdService(this.domainService.Object, this.adReadRepository.Object, It.IsAny<IPostalCodeAdapter>());
+            this.adReadService = new AdReadService(this.domainService.Object, this.adReadRepository.Object);
         }
 
         [Test]
@@ -55,7 +58,7 @@ namespace Application.Services.Tests.Ads
             //Arrange
 
             //Act
-            List<AdDto> ads = (List<AdDto>)this.adService.GetAllAdsAndApplyDiscount(DISCOUNT);
+            List<AdDto> ads = (List<AdDto>)this.adReadService.GetAllAdsAndApplyDiscount(DISCOUNT);
             this.domainService.Verify(x => x.ApplyDiscount(this.ads, DISCOUNT), Times.Once);
             this.adReadRepository.Verify(x => x.GetAll(), Times.Once);
 
@@ -69,7 +72,7 @@ namespace Application.Services.Tests.Ads
         public void throwException_when_invalid_discount_parameter()
         {
             //Act
-            TestDelegate testInvalidExceptionException = delegate { this.adService.GetAllAdsAndApplyDiscount(INVALID_DISCOUNT); };
+            TestDelegate testInvalidExceptionException = delegate { this.adReadService.GetAllAdsAndApplyDiscount(INVALID_DISCOUNT); };
 
             //Assert
             Assert.Throws<InvalidOperationException>(testInvalidExceptionException);

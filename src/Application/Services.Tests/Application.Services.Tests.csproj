@@ -88,7 +88,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Ads\AdServiceShould.cs" />
+    <Compile Include="Ads\AdReadServiceShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

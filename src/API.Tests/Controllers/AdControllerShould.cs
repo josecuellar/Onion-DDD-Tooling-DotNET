@@ -7,6 +7,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Domain.Core.Model.Ads;
 using System;
+using Application.Services.Ads.DTO;
 
 namespace API.Tests.Controllers
 {
@@ -14,7 +15,7 @@ namespace API.Tests.Controllers
     public class AdControllerShould
     {
 
-        private Mock<IAdService> adService;
+        private Mock<IAdReadService> adService;
         private AdController adController;
         private IEnumerable<AdDto> ads;
 
@@ -41,23 +42,11 @@ namespace API.Tests.Controllers
                     },
                 };
 
-            this.adService = new Mock<IAdService>();
+            this.adService = new Mock<IAdReadService>();
             this.adService.Setup(x => x.GetAllAdsAndApplyDiscount(DISCOUNT)).Returns(this.ads);
-            this.adController = new AdController(this.adService.Object);
+            //this.adController = new AdController(this.adService.Object);
         }
 
-        [Test]
-        public void return_view_result_given_get_ad()
-        {
-            // Act
-            var result = (string[])this.adController.Get() as string[];
-
-            this.adService.Verify(x => x.GetAllAdsAndApplyDiscount(It.IsAny<int>()), Times.Once);
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result[0], "value1");
-            Assert.AreEqual(result[1], "value2");
-        }
+        
     }
 }

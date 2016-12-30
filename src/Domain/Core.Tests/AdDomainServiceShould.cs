@@ -29,12 +29,14 @@ namespace Comain.Core.Tests
                     new Ad(new AdId("Ad1_" + Guid.NewGuid()), 
                            new Domain.Core.Model.Money(AMOUNT_MONEY_AD_1, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), 
                            new Domain.Core.Model.Coords(1.34343432, 3.44546), 
-                           new Domain.Core.Model.PostalCode("08150")),
+                           new Domain.Core.Model.PostalCode("08150"), 
+                           "Title 1"),
 
                     new Ad(new AdId("Ad2_" + Guid.NewGuid()), 
                             new Domain.Core.Model.Money(AMOUNT_MONEY_AD_2, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), 
                             new Domain.Core.Model.Coords(1.34343432, 3.44546), 
-                            new Domain.Core.Model.PostalCode("08759"))
+                            new Domain.Core.Model.PostalCode("08759"), 
+                           "Title 2")
                 };
 
                 this.adDomainService = new AdDomainService();

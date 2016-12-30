@@ -10,6 +10,8 @@ using Domain.Core.Model.Ads;
 using Domain.Core.Services.Ads;
 using Cache;
 using System.Collections.Generic;
+using MediatR;
+using Autofac.Features.Variance;
 
 namespace API
 {
@@ -36,7 +38,8 @@ namespace API
             builder.RegisterWebApiFilterProvider(config);
 
             // APPLICATION SERVICE
-            builder.RegisterType<AdService>().As<IAdService>().InstancePerRequest();
+            builder.RegisterType<AdReadService>().As<IAdReadService>().InstancePerRequest();
+            builder.RegisterType<AdCommandService>().As<IAdCommandService>().InstancePerRequest();
 
             //* INFRASTRUCTURE
             
@@ -60,6 +63,28 @@ namespace API
                 builder.RegisterType<ACL.PostalCodeTranslator>().As<Domain.Core.Services.IPostalCodeTranslator>().InstancePerRequest();
                 //*
             //*
+
+
+
+            //MEDIATR
+                builder.RegisterSource(new ContravariantRegistrationSource());
+                builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+
+                builder.RegisterAssemblyTypes(typeof(Models.Command.AdCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
+                builder.RegisterAssemblyTypes(typeof(Models.Query.AdQuery).GetTypeInfo().Assembly).AsImplementedInterfaces();
+
+                builder.Register<SingleInstanceFactory>(ctx =>
+                {
+                    var c = ctx.Resolve<IComponentContext>();
+                    return t => c.Resolve(t);
+                });
+                builder.Register<MultiInstanceFactory>(ctx =>
+                {
+                    var c = ctx.Resolve<IComponentContext>();
+                    return t => (IEnumerable<object>)c.Resolve(typeof(IEnumerable<>).MakeGenericType(t));
+                });
+            //**
+
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

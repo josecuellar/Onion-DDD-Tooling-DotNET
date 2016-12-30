@@ -15,19 +15,23 @@ namespace Domain.Core.Model.Ads
 
         public AdId Id;
 
+        public string Title;
+
         public Money Price;
 
         public Coords Coords;
 
         public PostalCode PostalCode;
 
-        public Ad(AdId id, Money price, Coords coords, PostalCode postalCode)
+        public Ad(AdId id, Money price, Coords coords, PostalCode postalCode, string title)
         {
             this.Id = id;
+            this.Title = title;
             this.Price = price;
             this.Coords = coords;
             this.PostalCode = postalCode;
         }
+
 
     }
 

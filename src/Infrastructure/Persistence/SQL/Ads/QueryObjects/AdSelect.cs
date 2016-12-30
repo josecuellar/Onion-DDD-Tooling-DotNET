@@ -10,6 +10,11 @@ namespace Persistence.SQL.Ads.QueryObjects
                                      from Ad p ");
         }
 
+        public QueryObject AllBySearchText(string text)
+        {
+            return new QueryObject(All().Sql + @" where p.Name LIKE '%@Name%'", new { Name = text });
+        }
+
         public QueryObject ById(string adId)
         {
             return new QueryObject(All().Sql + @" where p.AdId = @Id", new { Id = adId });
