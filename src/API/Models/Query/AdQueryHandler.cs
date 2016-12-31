@@ -11,9 +11,9 @@ namespace API.Models.Query
 {
     public class AdQueryHandler : IRequestHandler<AdQuery, AdQueryResult>
     {
-        private Application.Services.Ads.IAdReadService _adService;
+        private Application.Services.Ads.IAdQueryService _adService;
 
-        public AdQueryHandler(Application.Services.Ads.IAdReadService adService)
+        public AdQueryHandler(Application.Services.Ads.IAdQueryService adService)
         {
             this._adService = adService;
         }

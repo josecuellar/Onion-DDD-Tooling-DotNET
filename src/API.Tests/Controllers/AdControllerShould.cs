@@ -15,7 +15,7 @@ namespace API.Tests.Controllers
     public class AdControllerShould
     {
 
-        private Mock<IAdReadService> adService;
+        private Mock<IAdQueryService> adService;
         private AdController adController;
         private IEnumerable<AdDto> ads;
 
@@ -42,7 +42,7 @@ namespace API.Tests.Controllers
                     },
                 };
 
-            this.adService = new Mock<IAdReadService>();
+            this.adService = new Mock<IAdQueryService>();
             this.adService.Setup(x => x.GetAllAdsAndApplyDiscount(DISCOUNT)).Returns(this.ads);
             //this.adController = new AdController(this.adService.Object);
         }

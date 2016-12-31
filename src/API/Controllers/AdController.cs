@@ -1,5 +1,7 @@
-﻿using Application.Services.Ads;
+﻿using API.Models.Command;
+using Application.Services.Ads;
 using Application.Services.Ads.DTO;
+using FluentValidation.Results;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace API.Controllers
 {
@@ -27,11 +30,21 @@ namespace API.Controllers
         }
 
         // POST api/values
-        public async Task<int> Post([FromBody]API.Models.Command.AdCommand adCommand)
+        
+        public async Task<HttpResponseMessage> Post([FromBody]API.Models.Command.AdCommand adCommand)
         {
-            int result = await this._mediator.SendAsync<int>(adCommand);
+            //Fluent validator example
+            AdCommandValidator validator = new AdCommandValidator();
+            ValidationResult results = validator.Validate(adCommand);
 
-            return result;
+            if (results.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, await this._mediator.SendAsync<int>(adCommand));
+            }
+            
+            IList<ValidationFailure> failures = results.Errors;
+            return Request.CreateResponse(HttpStatusCode.BadRequest, failures);
+            
         }
 
         // PUT api/values/5

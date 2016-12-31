@@ -9,7 +9,7 @@ using Application.Services.Ads.DTO;
 
 namespace Application.Services.Ads
 {
-    public interface IAdReadService
+    public interface IAdQueryService
     {
         IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount);
 

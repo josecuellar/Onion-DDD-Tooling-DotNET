@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Core.Model.Ads
 {
-    public interface IAdReadRepository
+    public interface IAdQueryRepository
     {
         Ad GetById(AdId id);
 

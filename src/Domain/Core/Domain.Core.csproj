@@ -47,7 +47,7 @@
     <Compile Include="Model\Ads\AdId.cs" />
     <Compile Include="Model\Ads\AdNotFoundException.cs" />
     <Compile Include="Model\Ads\IAdCommandRepository.cs" />
-    <Compile Include="Model\Ads\IAdReadRepository.cs" />
+    <Compile Include="Model\Ads\IAdQueryRepository.cs" />
     <Compile Include="Model\Currency.cs" />
     <Compile Include="Model\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

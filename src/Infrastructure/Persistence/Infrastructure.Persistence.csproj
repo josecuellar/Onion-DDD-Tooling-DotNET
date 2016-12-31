@@ -61,7 +61,7 @@
     <Compile Include="SQL\QueryObjectExtensions.cs" />
     <Compile Include="SQL\SqlConnectionFactory.cs" />
     <Compile Include="SQL\IConnectionFactory.cs" />
-    <Compile Include="SQL\Ads\AdReadRepository.cs" />
+    <Compile Include="SQL\Ads\AdQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Core\Domain.Core.csproj">

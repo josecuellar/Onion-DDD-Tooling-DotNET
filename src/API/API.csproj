@@ -186,6 +186,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Command\AdCommandValidator.cs" />
     <Compile Include="Models\Command\AdCommandHandler.cs" />
     <Compile Include="Models\Query\AdQueryHandler.cs" />
     <Compile Include="Models\Query\AdQuery.cs" />

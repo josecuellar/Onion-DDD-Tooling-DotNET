@@ -10,21 +10,21 @@ using Application.Services.Ads.DTO;
 
 namespace Application.Services.Ads
 {
-    public class AdReadService : IAdReadService
+    public class AdQueryService : IAdQueryService
     {
         private IAdDomainService adDomainService;
-        private IAdReadRepository adReadRepository;
+        private IAdQueryRepository adQueryRepository;
 
-        public AdReadService(IAdDomainService adDomainService,
-                         IAdReadRepository adReadRepository)
+        public AdQueryService(IAdDomainService adDomainService,
+                         IAdQueryRepository adQueryRepository)
         {
             this.adDomainService = adDomainService;
-            this.adReadRepository = adReadRepository;
+            this.adQueryRepository = adQueryRepository;
         }
 
         public IEnumerable<AdDto> GetAdsTitleContainsAndApplyDiscount(string searchWord, int discount)
         {
-            IEnumerable<Ad> ads = this.adReadRepository.GetAllBySearchText(searchWord);
+            IEnumerable<Ad> ads = this.adQueryRepository.GetAllBySearchText(searchWord);
 
             this.adDomainService.ApplyDiscount(ads, discount);
 
@@ -44,7 +44,7 @@ namespace Application.Services.Ads
             if (discount <= 0)
                 throw new InvalidOperationException();
 
-            IEnumerable<Ad> ads = this.adReadRepository.GetAll();
+            IEnumerable<Ad> ads = this.adQueryRepository.GetAll();
 
             this.adDomainService.ApplyDiscount(ads, discount);
 

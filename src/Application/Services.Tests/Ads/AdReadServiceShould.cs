@@ -14,10 +14,10 @@ namespace Application.Services.Tests.Ads
     public class AdServiceShould
     {
 
-        private Mock<IAdReadRepository> adReadRepository;
+        private Mock<IAdQueryRepository> adQueryRepository;
         private Mock<IAdDomainService> domainService;
         private IEnumerable<Ad> ads;
-        private IAdReadService adReadService;
+        private IAdQueryService adQueryService;
 
         private const int DISCOUNT = 30;
         private const int INVALID_DISCOUNT = -50;
@@ -44,12 +44,12 @@ namespace Application.Services.Tests.Ads
                            "Title 2")
                 };
 
-            this.adReadRepository = new Mock<IAdReadRepository>();
-            adReadRepository.Setup(r => r.GetAll()).Returns(ads);
+            this.adQueryRepository = new Mock<IAdQueryRepository>();
+            adQueryRepository.Setup(r => r.GetAll()).Returns(ads);
 
             this.domainService = new Mock<IAdDomainService>();
 
-            this.adReadService = new AdReadService(this.domainService.Object, this.adReadRepository.Object);
+            this.adQueryService = new AdQueryService(this.domainService.Object, this.adQueryRepository.Object);
         }
 
         [Test]
@@ -58,9 +58,9 @@ namespace Application.Services.Tests.Ads
             //Arrange
 
             //Act
-            List<AdDto> ads = (List<AdDto>)this.adReadService.GetAllAdsAndApplyDiscount(DISCOUNT);
+            List<AdDto> ads = (List<AdDto>)this.adQueryService.GetAllAdsAndApplyDiscount(DISCOUNT);
             this.domainService.Verify(x => x.ApplyDiscount(this.ads, DISCOUNT), Times.Once);
-            this.adReadRepository.Verify(x => x.GetAll(), Times.Once);
+            this.adQueryRepository.Verify(x => x.GetAll(), Times.Once);
 
             //Assert
             Assert.That(ads, Is.Not.Null);
@@ -72,7 +72,7 @@ namespace Application.Services.Tests.Ads
         public void throwException_when_invalid_discount_parameter()
         {
             //Act
-            TestDelegate testInvalidExceptionException = delegate { this.adReadService.GetAllAdsAndApplyDiscount(INVALID_DISCOUNT); };
+            TestDelegate testInvalidExceptionException = delegate { this.adQueryService.GetAllAdsAndApplyDiscount(INVALID_DISCOUNT); };
 
             //Assert
             Assert.Throws<InvalidOperationException>(testInvalidExceptionException);

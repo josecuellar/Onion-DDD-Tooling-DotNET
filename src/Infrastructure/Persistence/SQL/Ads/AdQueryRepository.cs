@@ -7,12 +7,12 @@ using Cache;
 
 namespace Persistence.SQL.Ads
 {
-    public class AdReadRepository : IAdReadRepository
+    public class AdQueryRepository : IAdQueryRepository
     {
         private readonly IConnectionFactory connection;
         private readonly Cache.ICache<IEnumerable<Ad>> cacheRepository;
 
-        public AdReadRepository(IConnectionFactory connectionFactory, ICache<IEnumerable<Ad>> cacheRepository)
+        public AdQueryRepository(IConnectionFactory connectionFactory, ICache<IEnumerable<Ad>> cacheRepository)
         {
             this.connection = connectionFactory;
             this.cacheRepository = cacheRepository;

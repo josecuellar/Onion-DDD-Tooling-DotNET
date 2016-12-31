@@ -12,11 +12,11 @@ namespace Infrastructure.Persistence.Tests
 {
 
     [TestFixture]
-        public class AdReadRepositoryShould
+    public class AdQueryRepositoryShould
         {
-            private Mock<Cache.ICache<IEnumerable<Ad>>> cacheReadAd;
+        private Mock<Cache.ICache<IEnumerable<Ad>>> cacheQueryAd;
             private Mock<IConnectionFactory> connectionFactory;
-            private IAdReadRepository adReadRepository;
+            private IAdQueryRepository adQueryRepository;
             private List<Ad> ads;
             
             private IDbConnection connection;
@@ -38,15 +38,15 @@ namespace Infrastructure.Persistence.Tests
                 };
 
                 //Disable cache
-                this.cacheReadAd = new Mock<Cache.ICache<IEnumerable<Ad>>>();
-                this.cacheReadAd.Setup(r => r.Get(It.IsAny<string>())).Returns((IEnumerable<Ad>)null);
+                this.cacheQueryAd = new Mock<Cache.ICache<IEnumerable<Ad>>>();
+                this.cacheQueryAd.Setup(r => r.Get(It.IsAny<string>())).Returns((IEnumerable<Ad>)null);
                 //*
 
                 this.connection = new SqlConnection(CONNECTION_STRING);
                 this.connectionFactory = new Mock<IConnectionFactory>();
                 this.connectionFactory.Setup(x => x.Create()).Returns(connection);
 
-                this.adReadRepository = new AdReadRepository(this.connectionFactory.Object, this.cacheReadAd.Object);
+                this.adQueryRepository = new AdQueryRepository(this.connectionFactory.Object, this.cacheQueryAd.Object);
 
             }
 
@@ -54,10 +54,10 @@ namespace Infrastructure.Persistence.Tests
             public void getall_ads_repository()
             {
                 //Act
-                IEnumerable<Ad> ads = this.adReadRepository.GetAll();
+                IEnumerable<Ad> ads = this.adQueryRepository.GetAll();
 
-                this.cacheReadAd.Verify(x => x.Get(It.IsAny<string>()), Times.Once);
-                this.cacheReadAd.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<IEnumerable<Ad>>()), Times.Once);
+                this.cacheQueryAd.Verify(x => x.Get(It.IsAny<string>()), Times.Once);
+                this.cacheQueryAd.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<IEnumerable<Ad>>()), Times.Once);
 
                 //Assert
                 Assert.IsNotNull(ads);
@@ -67,10 +67,10 @@ namespace Infrastructure.Persistence.Tests
             public void get_ad_repository()
             {
                 //Act
-                Ad ad = this.adReadRepository.GetById(this.ads[0].Id);
+                Ad ad = this.adQueryRepository.GetById(this.ads[0].Id);
 
-                this.cacheReadAd.Verify(x => x.Get(It.IsAny<string>()), Times.Once);
-                this.cacheReadAd.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<IEnumerable<Ad>>()), Times.Once);
+                this.cacheQueryAd.Verify(x => x.Get(It.IsAny<string>()), Times.Once);
+                this.cacheQueryAd.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<IEnumerable<Ad>>()), Times.Once);
 
                 //Assert
                 Assert.IsNotNull(ad);

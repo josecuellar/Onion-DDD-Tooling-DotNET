@@ -38,7 +38,7 @@ namespace API
             builder.RegisterWebApiFilterProvider(config);
 
             // APPLICATION SERVICE
-            builder.RegisterType<AdReadService>().As<IAdReadService>().InstancePerRequest();
+            builder.RegisterType<AdQueryService>().As<IAdQueryService>().InstancePerRequest();
             builder.RegisterType<AdCommandService>().As<IAdCommandService>().InstancePerRequest();
 
             //* INFRASTRUCTURE
@@ -52,7 +52,7 @@ namespace API
                 .WithParameter("connectionString", System.Configuration.ConfigurationManager.ConnectionStrings["LocalSQLServer"].ConnectionString)
                 .InstancePerRequest();
 
-            builder.RegisterType<Persistence.SQL.Ads.AdReadRepository>().As<IAdReadRepository>().InstancePerRequest();
+            builder.RegisterType<Persistence.SQL.Ads.AdQueryRepository>().As<IAdQueryRepository>().InstancePerRequest();
             builder.RegisterType<Persistence.SQL.Ads.AdCommandRepository>().As<IAdCommandRepository>().InstancePerRequest();
             //*
 
