@@ -3,6 +3,7 @@ using System.Linq;
 using Domain.Core.Model.Ads;
 using System.Data;
 using Persistence.SQL.Ads.QueryObjects;
+using System.Threading.Tasks;
 
 namespace Persistence.SQL.Ads
 {
@@ -15,34 +16,46 @@ namespace Persistence.SQL.Ads
             this.connection = connectionFactory;
         }
 
-        public int Insert(Ad ad)
+        public async Task<bool> Insert(Ad ad)
         {
-            using (IDbConnection dbConnection = connection.Create())
+            return true;
+            return await Task.Run(() =>
             {
-                var adInsert = new AdInsert();
-                int newId = (int)dbConnection.Query<Int64>(adInsert.Query(new { Name = "", Price = ad.Price.Amount })).Single();
-                return newId;
-            }
+                using (IDbConnection dbConnection = connection.Create())
+                {
+                    var adInsert = new AdInsert();
+                    int newId = (int)dbConnection.Query<Int64>(adInsert.Query(new { Name = "", Price = ad.Price.Amount })).Single();
+                    return (newId > 0);
+                }
+            });
         }
 
-        public bool Update(Ad ad)
+        public async Task<bool> Update(Ad ad)
         {
-            using (IDbConnection dbConnection = connection.Create())
+            return true;
+            return await Task.Run(() =>
             {
-                var adUpdate = new AdUpdate();
-                int resultUpdate = dbConnection.Execute(adUpdate.Query(new { Price = ad.Price.Amount, Name = "name example" }));
-                return (resultUpdate > 0);
-            }
+                using (IDbConnection dbConnection = connection.Create())
+                {
+                    var adUpdate = new AdUpdate();
+                    int resultUpdate = dbConnection.Execute(adUpdate.Query(new { Price = ad.Price.Amount, Name = "name example" }));
+                    return (resultUpdate > 0);
+                }
+            });
         }
 
-        public bool Delete(Ad ad)
+        public async Task<bool> Delete(Ad ad)
         {
-            using (IDbConnection dbConnection = connection.Create())
+            return true;
+            return await Task.Run(() =>
             {
-                QueryObject adDelete = new AdDelete().ById(ad.Id.Id);
-                int resultUpdate = dbConnection.Execute(adDelete);
-                return (resultUpdate > 0);
-            }
+                using (IDbConnection dbConnection = connection.Create())
+                {
+                    QueryObject adDelete = new AdDelete().ById(ad.Id.Id);
+                    int resultUpdate = dbConnection.Execute(adDelete);
+                    return (resultUpdate > 0);
+                }
+            });
         }
     }
 }

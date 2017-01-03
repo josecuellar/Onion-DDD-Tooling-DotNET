@@ -40,7 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event\PublishEvent.cs" />
+    <Compile Include="Event\IDomainEvent.cs" />
+    <Compile Include="Model\Ads\IAdCreated.cs" />
+    <Compile Include="Model\Ads\IAdDiscountApplied.cs" />
+    <Compile Include="Event\IDomainEventPublisher.cs" />
+    <Compile Include="Model\Ads\IAdPriceChanged.cs" />
+    <Compile Include="Event\AdDomainEvents.cs" />
+    <Compile Include="Model\Ads\AdCreated.cs" />
+    <Compile Include="Model\Ads\AdDiscountApplied.cs" />
+    <Compile Include="Model\Ads\AdPriceChanged.cs" />
+    <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Model\PostalCode.cs" />
     <Compile Include="Model\Coords.cs" />
     <Compile Include="Model\Ads\Ad.cs" />
@@ -53,8 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ACL\IPostalCodeTranslator.cs" />
     <Compile Include="Services\ACL\IPostalCodeAdapter.cs" />
-    <Compile Include="Services\Ads\AdDomainService.cs" />
-    <Compile Include="Services\Ads\IAdDomainService.cs" />
+    <Compile Include="Services\ICache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

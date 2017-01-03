@@ -11,7 +11,9 @@ namespace Application.Services.Ads
 {
     public interface IAdCommandService
     {
-        Task<int> CreateNewAd(AdDto adDto);
+        Task<bool> CreateNewAd(AdDto adDto);
+
+        Task<bool> ChangePriceAndSaveAd(AdId adId, int price, string isoCode);
 
         //AdDto ChangePostalCode(string advId, string code);
     }

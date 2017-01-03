@@ -20,6 +20,19 @@ https://github.com/jbogard/MediatR/wiki
 https://github.com/JeremySkinner/FluentValidation
 <br><br>
    
+<i>MassTransit for Domain Events</i><br>
+
+http://looselycoupledlabs.com/2014/06/masstransit-publish-subscribe-example/
+<br>
+http://looselycoupledlabs.com/2014/07/a-real-world-masstransit-customer-portal-example/
+<br><br>
+
+I followed the separate concept of Raise & Publish (dispatching only when persisted entity and raise when occurred in memory).<br>
+https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/
+
+
+<br><br>
+
 If you think that some part of the code not follow some best practice feel free for fork and contribute!<br>
 Thanks!
 </body>

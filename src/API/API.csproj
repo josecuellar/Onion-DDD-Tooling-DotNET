@@ -268,6 +268,10 @@
       <Project>{a9b93089-f13f-4ff8-aa3e-07960edc5af0}</Project>
       <Name>Infrastructure.Cache</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Messaging\Infrastructure.Messaging.csproj">
+      <Project>{92aa8e3e-45ac-432f-a32e-044c79138d14}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Persistence\Infrastructure.Persistence.csproj">
       <Project>{e8d139da-abd3-4178-8a7b-6dddd0ed6afc}</Project>
       <Name>Infrastructure.Persistence</Name>

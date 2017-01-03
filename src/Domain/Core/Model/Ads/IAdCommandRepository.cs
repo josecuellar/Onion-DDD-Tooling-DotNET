@@ -8,10 +8,10 @@ namespace Domain.Core.Model.Ads
 {
     public interface IAdCommandRepository
     {
-        int Insert(Ad ad);
+        Task<bool> Insert(Ad ad);
 
-        bool Update(Ad ad);
+        Task<bool> Update(Ad ad);
 
-        bool Delete(Ad ad);
+        Task<bool> Delete(Ad ad);
     }
 }

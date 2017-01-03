@@ -14,7 +14,7 @@ using System.Collections;
 namespace Cache
 {
 
-    public class HttpRuntimeCache<T> : ICache<T>
+    public class HttpRuntimeCache<T> : Domain.Core.Services.ICache<T>
     {
 
         private const int AbsoluteMinutesCache = 720;

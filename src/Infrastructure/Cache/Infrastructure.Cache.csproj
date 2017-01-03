@@ -42,8 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpRuntimeCache.cs" />
-    <Compile Include="ICache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Core\Domain.Core.csproj">
+      <Project>{0a90ef36-c558-4ee5-b757-07353a13c740}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

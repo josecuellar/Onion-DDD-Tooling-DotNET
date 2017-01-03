@@ -21,14 +21,9 @@ namespace API.Models.Query
         public AdQueryResult Handle(AdQuery message)
         {
             var model = new AdQueryResult();
-            if (string.IsNullOrEmpty(message.SearchString))
-            {
-                model.Ads.ToList().AddRange(this._adService.GetAllAdsAndApplyDiscount(message.Discount));
-                return model;
-            }
-
-            model.Ads.ToList().AddRange(this._adService.GetAdsTitleContainsAndApplyDiscount(message.SearchString, message.Discount));
+            model.Ads.ToList().Add(this._adService.GetAdTitleContainsAndApplyDiscount(message.SearchString, message.Discount));
             return model;
+
         }
     }
 }

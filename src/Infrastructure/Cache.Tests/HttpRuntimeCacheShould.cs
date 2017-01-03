@@ -1,5 +1,6 @@
 ﻿using Cache;
 using Domain.Core.Model.Ads;
+using Domain.Core.Services;
 using Moq;
 using NUnit.Framework;
 using System;

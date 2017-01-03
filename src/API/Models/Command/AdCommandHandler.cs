@@ -10,7 +10,7 @@ using Application.Services.Ads.DTO;
 
 namespace API.Models.Command
 {
-    public class AdCommandHandler : IAsyncRequestHandler<AdCommand, int>
+    public class AdCommandHandler : IAsyncRequestHandler<AdCommand, bool>
     {
         private Application.Services.Ads.IAdCommandService _adService;
 
@@ -19,8 +19,7 @@ namespace API.Models.Command
             _adService = adService;
         }
 
-
-        public async Task<int> Handle(AdCommand message)
+        public async Task<bool> Handle(AdCommand message)
         {
             AdDto dtoCreated = new AdDto()
             {

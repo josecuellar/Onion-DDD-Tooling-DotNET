@@ -11,8 +11,8 @@ namespace Application.Services.Ads
 {
     public interface IAdQueryService
     {
-        IEnumerable<AdDto> GetAllAdsAndApplyDiscount(int discount);
+        AdDto GetAdAndApplyDiscount(string adId, int discount);
 
-        IEnumerable<AdDto> GetAdsTitleContainsAndApplyDiscount(string searchText, int discount);
+        AdDto GetAdTitleContainsAndApplyDiscount(string searchText, int discount);
     }
 }

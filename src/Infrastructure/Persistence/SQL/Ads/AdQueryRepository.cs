@@ -4,13 +4,14 @@ using Domain.Core.Model.Ads;
 using System.Data;
 using Persistence.SQL.Ads.QueryObjects;
 using Cache;
+using Domain.Core.Services;
 
 namespace Persistence.SQL.Ads
 {
     public class AdQueryRepository : IAdQueryRepository
     {
         private readonly IConnectionFactory connection;
-        private readonly Cache.ICache<IEnumerable<Ad>> cacheRepository;
+        private readonly ICache<IEnumerable<Ad>> cacheRepository;
 
         public AdQueryRepository(IConnectionFactory connectionFactory, ICache<IEnumerable<Ad>> cacheRepository)
         {
@@ -59,23 +60,19 @@ namespace Persistence.SQL.Ads
             }
         }
 
-        public IEnumerable<Ad> GetAllBySearchText(string text)
+        public Ad GetBySearchText(string text)
         {
 
-            //TO-DO - Return fixed data. Get original repo
-            IEnumerable<Ad> adToReturn = new List<Ad>();
-            ((List<Ad>)adToReturn).Add(new Ad(new AdId("1"), new Domain.Core.Model.Money(32, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), new Domain.Core.Model.Coords(33, 33), new Domain.Core.Model.PostalCode("08150"), "Title 1"));
-            ((List<Ad>)adToReturn).Add(new Ad(new AdId("2"), new Domain.Core.Model.Money(32, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), new Domain.Core.Model.Coords(33, 33), new Domain.Core.Model.PostalCode("08150"), "Title 1"));
-            ((List<Ad>)adToReturn).Add(new Ad(new AdId("3"), new Domain.Core.Model.Money(32, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), new Domain.Core.Model.Coords(33, 33), new Domain.Core.Model.PostalCode("08150"), "Title 1"));
-            return adToReturn;
+
+            return new Ad(new AdId("1"), new Domain.Core.Model.Money(32, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)), new Domain.Core.Model.Coords(33, 33), new Domain.Core.Model.PostalCode("08150"), "Title 1");
             //*
 
-            using (IDbConnection dbConnection = connection.Create())
-            {
-                QueryObject byAll = new AdSelect().AllBySearchText(text);
-                adToReturn = dbConnection.Query<Ad>(byAll);
-                return adToReturn;
-            }
+            //using (IDbConnection dbConnection = connection.Create())
+            //{
+            //    QueryObject byAll = new AdSelect().AllBySearchText(text);
+            //    adToReturn = dbConnection.Query<Ad>(byAll);
+            //    return adToReturn;
+            //}
         }
 
     }

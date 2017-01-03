@@ -12,6 +12,6 @@ namespace Domain.Core.Model.Ads
 
         IEnumerable<Ad> GetAll();
 
-        IEnumerable<Ad> GetAllBySearchText(string text);
+        Ad GetBySearchText(string text);
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Persistence.SQL.Ads;
+using Domain.Core.Services;
 
 namespace Infrastructure.Persistence.Tests
 {
@@ -14,7 +15,7 @@ namespace Infrastructure.Persistence.Tests
     [TestFixture]
     public class AdQueryRepositoryShould
         {
-        private Mock<Cache.ICache<IEnumerable<Ad>>> cacheQueryAd;
+        private Mock<Domain.Core.Services.ICache<IEnumerable<Ad>>> cacheQueryAd;
             private Mock<IConnectionFactory> connectionFactory;
             private IAdQueryRepository adQueryRepository;
             private List<Ad> ads;
@@ -38,7 +39,7 @@ namespace Infrastructure.Persistence.Tests
                 };
 
                 //Disable cache
-                this.cacheQueryAd = new Mock<Cache.ICache<IEnumerable<Ad>>>();
+                this.cacheQueryAd = new Mock<ICache<IEnumerable<Ad>>>();
                 this.cacheQueryAd.Setup(r => r.Get(It.IsAny<string>())).Returns((IEnumerable<Ad>)null);
                 //*
 

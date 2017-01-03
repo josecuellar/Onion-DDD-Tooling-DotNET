@@ -3,38 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Core.Services.Ads;
 using Domain.Core.Services;
 using Domain.Core.Model.Ads;
 using Application.Services.Ads.DTO;
+using Domain.Core.Event;
 
 namespace Application.Services.Ads
 {
     public class AdCommandService : IAdCommandService
     {
-        private IAdDomainService adDomainService;
         private IAdCommandRepository adCommandRepository;
+        private IAdQueryRepository adQueryRepository;
         //private IPostalCodeAdapter postalCodeAdapter;
 
         //public AdCommandService(IAdDomainService adDomainService,
         //                 IAdCommandRepository adCommandRepository,
         //                 IPostalCodeAdapter postalCodeAdapter)
 
-       public AdCommandService(IAdDomainService adDomainService,
-                         IAdCommandRepository adCommandRepository)
+       public AdCommandService(IAdQueryRepository adQueryRepository,
+                               IAdCommandRepository adCommandRepository)
         {
-            this.adDomainService = adDomainService;
             this.adCommandRepository = adCommandRepository;
+            this.adQueryRepository = adQueryRepository;
             //this.postalCodeAdapter = postalCodeAdapter;
         }
 
-        public async Task<int> CreateNewAd(AdDto adDto)
+        public async Task<bool> CreateNewAd(AdDto adDto)
         {
-            return this.adCommandRepository.Insert(new Ad(new AdId(adDto.Id),
+            
+            
+            
+            Ad ToAdd = new Ad(new AdId(adDto.Id),
                            new Domain.Core.Model.Money(adDto.Amount, new Domain.Core.Model.Currency(Domain.Core.Model.Currency.IsoCode.EUR)),
                            new Domain.Core.Model.Coords(1.34343432, 3.44546),
                            new Domain.Core.Model.PostalCode(adDto.PostalCode),
-                           "Title 1"));
+                           "Title 1");
+
+            if (await this.adCommandRepository.Insert(ToAdd))
+                ToAdd.DispatchEvents();
+
+
+            return true;
         }
 
         //public AdDto ChangePostalCode(string adId, string code)
@@ -54,5 +63,19 @@ namespace Application.Services.Ads
         //    };
 
         //}
+
+        public async Task<bool> ChangePriceAndSaveAd(AdId adId, int amount, string isoCode)
+        {
+            Ad adToChangePriceAndSave = this.adQueryRepository.GetById(adId);
+            
+            Domain.Core.Model.Currency.IsoCode isoCodeEnum = (Domain.Core.Model.Currency.IsoCode)Enum.Parse(typeof(Domain.Core.Model.Currency.IsoCode), isoCode, true);
+
+            adToChangePriceAndSave.ChangePrice(amount, isoCodeEnum);
+
+            if (await this.adCommandRepository.Update(adToChangePriceAndSave))
+                adToChangePriceAndSave.DispatchEvents();
+
+            return true;
+        }
     }
 }

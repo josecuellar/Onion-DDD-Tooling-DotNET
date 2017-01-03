@@ -6,7 +6,7 @@ using System.Web;
 
 namespace API.Models.Command
 {
-    public class AdCommand : IAsyncRequest<int>
+    public class AdCommand : IAsyncRequest<bool>
     {
         public string Id { get; set; }
 

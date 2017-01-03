@@ -7,17 +7,19 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Application.Services.Ads;
 using Domain.Core.Model.Ads;
-using Domain.Core.Services.Ads;
 using Cache;
 using System.Collections.Generic;
 using MediatR;
 using Autofac.Features.Variance;
+using Domain.Core.Services;
+using Domain.Core.Event;
+using Infrastructure.Messaging;
 
 namespace API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
-        protected void Application_Start()
+         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -57,14 +59,14 @@ namespace API
             //*
 
             //DOMAIN SERVICES - ACL
-            builder.RegisterType<AdDomainService>().As<IAdDomainService>().InstancePerRequest();
+            
                 //ACL for external API façade
                 builder.RegisterType<ACL.PostalCodeAdapter>().As<Domain.Core.Services.IPostalCodeAdapter>().InstancePerRequest();
                 builder.RegisterType<ACL.PostalCodeTranslator>().As<Domain.Core.Services.IPostalCodeTranslator>().InstancePerRequest();
                 //*
             //*
 
-
+           
 
             //MEDIATR
                 builder.RegisterSource(new ContravariantRegistrationSource());
@@ -89,6 +91,13 @@ namespace API
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
+            DomainEvents.Dispatcher = new Infrastructure.Messaging.MassTransitMiddleware();
+
+            IAdPriceChangedConsumer.Listen();
+            IAdCreatedConsumer.Listen();
+            IAdDiscountAppliedConsumer.Listen();
+
         }
     }
 }
+  

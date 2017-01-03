@@ -43,7 +43,7 @@ namespace API.Tests.Controllers
                 };
 
             this.adService = new Mock<IAdQueryService>();
-            this.adService.Setup(x => x.GetAllAdsAndApplyDiscount(DISCOUNT)).Returns(this.ads);
+            //this.adService.Setup(x => x.GetAllAdsAndApplyDiscount(DISCOUNT)).Returns(this.ads);
             //this.adController = new AdController(this.adService.Object);
         }
 

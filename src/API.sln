@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{B74B67B2-3B20-44E9-AD29-5167D5EE4D32}"
 EndProject
@@ -37,6 +37,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACL", "Infrastructure\ACL\ACL.csproj", "{238BC2D1-4053-47C1-B785-DDF5C20E695A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Cache.Tests", "Infrastructure\Cache.Tests\Infrastructure.Cache.Tests.csproj", "{F27294A6-4A9B-4CDF-AE7B-AAC2A01FB4E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Messaging", "Infrastructure\Messaging\Infrastructure.Messaging.csproj", "{92AA8E3E-45AC-432F-A32E-044C79138D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +90,10 @@ Global
 		{F27294A6-4A9B-4CDF-AE7B-AAC2A01FB4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27294A6-4A9B-4CDF-AE7B-AAC2A01FB4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27294A6-4A9B-4CDF-AE7B-AAC2A01FB4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92AA8E3E-45AC-432F-A32E-044C79138D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92AA8E3E-45AC-432F-A32E-044C79138D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92AA8E3E-45AC-432F-A32E-044C79138D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92AA8E3E-45AC-432F-A32E-044C79138D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +108,6 @@ Global
 		{AFFE2280-C73A-4597-999B-15D9A4E7303D} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
 		{238BC2D1-4053-47C1-B785-DDF5C20E695A} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
 		{F27294A6-4A9B-4CDF-AE7B-AAC2A01FB4E0} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
+		{92AA8E3E-45AC-432F-A32E-044C79138D14} = {99A93766-245E-47B0-A11A-4AF3981E28E3}
 	EndGlobalSection
 EndGlobal

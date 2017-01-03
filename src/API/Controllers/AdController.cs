@@ -39,7 +39,7 @@ namespace API.Controllers
 
             if (results.IsValid)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, await this._mediator.SendAsync<int>(adCommand));
+                return Request.CreateResponse(HttpStatusCode.OK, this._mediator.SendAsync<bool>(adCommand));
             }
             
             IList<ValidationFailure> failures = results.Errors;

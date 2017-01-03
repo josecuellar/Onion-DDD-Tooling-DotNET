@@ -2,7 +2,6 @@
 using Application.Services.Ads.DTO;
 using Domain.Core.Model.Ads;
 using Domain.Core.Services;
-using Domain.Core.Services.Ads;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -15,7 +14,6 @@ namespace Application.Services.Tests.Ads
     {
 
         private Mock<IAdQueryRepository> adQueryRepository;
-        private Mock<IAdDomainService> domainService;
         private IEnumerable<Ad> ads;
         private IAdQueryService adQueryService;
 
@@ -47,9 +45,7 @@ namespace Application.Services.Tests.Ads
             this.adQueryRepository = new Mock<IAdQueryRepository>();
             adQueryRepository.Setup(r => r.GetAll()).Returns(ads);
 
-            this.domainService = new Mock<IAdDomainService>();
-
-            this.adQueryService = new AdQueryService(this.domainService.Object, this.adQueryRepository.Object);
+            this.adQueryService = new AdQueryService(this.adQueryRepository.Object);
         }
 
         [Test]
@@ -58,13 +54,12 @@ namespace Application.Services.Tests.Ads
             //Arrange
 
             //Act
-            List<AdDto> ads = (List<AdDto>)this.adQueryService.GetAllAdsAndApplyDiscount(DISCOUNT);
-            this.domainService.Verify(x => x.ApplyDiscount(this.ads, DISCOUNT), Times.Once);
+            AdDto ad = this.adQueryService.GetAdAndApplyDiscount("1234", DISCOUNT);
+            //this.domainService.Verify(x => x.ApplyDiscount(this.ads, DISCOUNT), Times.Once);
             this.adQueryRepository.Verify(x => x.GetAll(), Times.Once);
 
             //Assert
             Assert.That(ads, Is.Not.Null);
-            Assert.AreEqual(ads.Count, 2);
         }
 
 
@@ -72,7 +67,7 @@ namespace Application.Services.Tests.Ads
         public void throwException_when_invalid_discount_parameter()
         {
             //Act
-            TestDelegate testInvalidExceptionException = delegate { this.adQueryService.GetAllAdsAndApplyDiscount(INVALID_DISCOUNT); };
+            TestDelegate testInvalidExceptionException = delegate { this.adQueryService.GetAdAndApplyDiscount("1234", INVALID_DISCOUNT); };
 
             //Assert
             Assert.Throws<InvalidOperationException>(testInvalidExceptionException);
