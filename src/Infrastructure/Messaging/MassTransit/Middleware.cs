@@ -10,9 +10,9 @@ using MassTransit.BusConfigurators;
 using MassTransit.Log4NetIntegration.Logging;
 
 
-namespace Infrastructure.Messaging
+namespace Infrastructure.Messaging.MassTransitEngine
 {
-    public class MassTransitMiddleware : IDomainEventPublisher
+    public class Middleware : IDomainEventPublisher
     {
         private static IServiceBus serviceBus = null;
         private static IServiceBus bus
@@ -39,13 +39,9 @@ namespace Infrastructure.Messaging
                 case "AdDiscountApplied":
                     bus.Publish<IAdDiscountApplied>(domainEvent, x => { x.SetDeliveryMode(MassTransit.DeliveryMode.Persistent); });
                     break;
-            }
-
-            
-        }
-        
+            }            
+        }        
     }
-
 
     public class BusInitializer
     {

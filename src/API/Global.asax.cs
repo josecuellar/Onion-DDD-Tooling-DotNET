@@ -91,11 +91,11 @@ namespace API
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
-            DomainEvents.Dispatcher = new Infrastructure.Messaging.MassTransitMiddleware();
+            DomainEvents.Dispatcher = new Infrastructure.Messaging.MassTransitEngine.Middleware();
 
-            IAdPriceChangedConsumer.Listen();
-            IAdCreatedConsumer.Listen();
-            IAdDiscountAppliedConsumer.Listen();
+            Infrastructure.Messaging.MassTransitEngine.Consumer.AdPriceChanged.Listen();
+            Infrastructure.Messaging.MassTransitEngine.Consumer.AdCreated.Listen();
+            Infrastructure.Messaging.MassTransitEngine.Consumer.AdDiscountApplied.Listen();
 
         }
     }

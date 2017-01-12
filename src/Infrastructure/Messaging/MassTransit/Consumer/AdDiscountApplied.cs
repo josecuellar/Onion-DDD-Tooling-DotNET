@@ -8,9 +8,9 @@ using Domain.Core.Model.Ads;
 using Domain.Core.Event;
 using MassTransit;
 
-namespace Infrastructure.Messaging
+namespace Infrastructure.Messaging.MassTransitEngine.Consumer
 {
-    public class IAdCreatedConsumer : Consumes<IAdCreated>.Context
+    public class AdDiscountApplied : Consumes<IAdDiscountApplied>.Context
     {
         public static void Listen()
         {
@@ -18,12 +18,12 @@ namespace Infrastructure.Messaging
             {
                 x.Subscribe(subs =>
                 {
-                    subs.Consumer<IAdCreatedConsumer>().Permanent();
+                    subs.Consumer<AdDiscountApplied>().Permanent();
                 });
             });
         }
 
-        public void Consume(IConsumeContext<IAdCreated> message)
+        public void Consume(IConsumeContext<IAdDiscountApplied> message)
         {
             //throw new NotImplementedException();
         }

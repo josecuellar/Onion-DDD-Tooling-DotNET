@@ -45,7 +45,7 @@
     <Compile Include="Model\Ads\IAdDiscountApplied.cs" />
     <Compile Include="Event\IDomainEventPublisher.cs" />
     <Compile Include="Model\Ads\IAdPriceChanged.cs" />
-    <Compile Include="Event\AdDomainEvents.cs" />
+    <Compile Include="Event\DomainEvents.cs" />
     <Compile Include="Model\Ads\AdCreated.cs" />
     <Compile Include="Model\Ads\AdDiscountApplied.cs" />
     <Compile Include="Model\Ads\AdPriceChanged.cs" />

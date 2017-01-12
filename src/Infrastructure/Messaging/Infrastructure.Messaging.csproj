@@ -70,10 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAdCreatedConsumer.cs" />
-    <Compile Include="IAdDiscountApplied.cs" />
-    <Compile Include="IAdPriceChangedConsumer.cs" />
-    <Compile Include="MassTransitMiddleware.cs" />
+    <Compile Include="MassTransit\Consumer\AdCreated.cs" />
+    <Compile Include="MassTransit\Consumer\AdDiscountApplied.cs" />
+    <Compile Include="MassTransit\Consumer\AdPriceChanged.cs" />
+    <Compile Include="MassTransit\Middleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
