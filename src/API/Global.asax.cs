@@ -98,6 +98,7 @@ namespace API
             Infrastructure.Messaging.MassTransitEngine.Consumer.AdDiscountApplied.Listen();
 
         }
+
     }
 }
   

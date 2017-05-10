@@ -188,6 +188,7 @@
     </Compile>
     <Compile Include="Models\Command\AdCommandValidator.cs" />
     <Compile Include="Models\Command\AdCommandHandler.cs" />
+    <Compile Include="Models\LanguageParser.cs" />
     <Compile Include="Models\Query\AdQueryHandler.cs" />
     <Compile Include="Models\Query\AdQuery.cs" />
     <Compile Include="Models\Command\AdCommand.cs" />
